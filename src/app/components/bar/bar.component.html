@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-header">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <i class="fa-solid fa-globe"></i>
+        </div>
+      </div>
+      <select class="form-control">
+        <option>op1</option>
+        <option>op2</option>
+        <option>op3</option>
+      </select>
+    </div>
+  </div>
+  <div class="card-body">
+    <canvas baseChart
+        [data]="barChartData"
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins"
+        [legend]="barChartLegend"
+        [type]="'bar'">
+</canvas>
+  </div>
+</div>

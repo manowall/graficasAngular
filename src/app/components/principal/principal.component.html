@@ -1,0 +1,71 @@
+<div
+class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+<h1 class="h2">Datos Covid 19</h1>
+  <form>
+    <div class="form-row d-flex-justify-content-between">
+      <!--Fecha Inicios-->
+      <div class="col-md-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa-regular fa-calendar"></i>
+            </div>
+          </div>
+          <input type="text"
+          name="dateInit"
+          placeholder="Datepicker"
+          class="form-control"
+          bsDatepicker
+          [bsConfig]="{ isAnimated: true }"
+          [minDate]="minDate"
+          [maxDate]="dateEnd ? dateEnd : maxDate"
+          [(ngModel)]="dateInit"
+          (bsValueChange)="loadData($event)">
+        </div>
+      </div>
+      <!--Fecha Final-->
+      <div class="col-md-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa-regular fa-calendar"></i>
+            </div>
+          </div>
+          <input type="text"
+          name="dateEnd"
+          placeholder="Datepicker"
+          class="form-control"
+          bsDatepicker
+          [bsConfig]="{ isAnimated: true }"
+          [maxDate]="maxDate"
+          [minDate]="dateInit ? dateInit : minDate"
+          [(ngModel)]="dateEnd"
+          (bsValueChange)="loadData($event)">
+        </div>
+      </div>
+      <!--Paises-->
+      <div class="col-md-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+          </div>
+          <select class="form-control" name="country" [(ngModel)]="country" (change)="loadData($event)">
+            <option [ngValue]="null" selected>Elige un país.</option>
+            <option *ngFor="let country of countries" [ngValue]="country">{{country}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="chart-wrapper">
+  <canvas baseChart
+    [type]="'line'"
+    [data]="lineChartData"
+    [options]="lineChartOptions"
+    [legend]="lineChartLegend">
+  </canvas>
+</div>
